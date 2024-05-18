@@ -33,5 +33,6 @@ return require('packer').startup(function(use)
 	}
 	use 'mbbill/undotree'
 	use { "catppuccin/nvim", as = "catppuccin" }
+	use 'github/copilot.vim'
 end)
 
