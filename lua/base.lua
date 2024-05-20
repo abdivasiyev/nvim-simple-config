@@ -2,7 +2,7 @@
 vim.opt.termguicolors = true -- enabled 24 bit RGB color
 vim.opt.signcolumn = 'yes' -- always draw sign column
 vim.opt.updatetime = 50 -- update time for the swap file and for the cursorHold event
-vim.opt.colorcolumn = '80' -- colorized 80th column
+vim.opt.colorcolumn = '120' -- colorized 80th column
 vim.opt.clipboard:append { 'unnamedplus' } -- force to use the clipboard for all the operations
 
 -- BACKUP 
