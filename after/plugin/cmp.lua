@@ -13,8 +13,8 @@ cmp.setup({
 	},
 	mapping = cmp.mapping.preset.insert({
 		['<CR>'] = cmp.mapping.confirm({select = false}),
-		['<Tab>'] = cmp_action.luasnip_supertab(),
-		['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+		['<Down>'] = cmp_action.luasnip_supertab(),
+		['<Up>'] = cmp_action.luasnip_shift_supertab(),
 	}),
 	snippet = {
 		expand = function(args)
