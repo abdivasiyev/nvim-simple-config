@@ -57,4 +57,12 @@ return require('packer').startup(function(use)
 	}
 	use 'mg979/vim-visual-multi'
 	use 'wakatime/vim-wakatime'
+	use {
+		"rcarriga/nvim-dap-ui",
+		requires = {
+			"mfussenegger/nvim-dap",
+			"nvim-neotest/nvim-nio",
+			"leoluz/nvim-dap-go",
+		},
+	}
 end)
