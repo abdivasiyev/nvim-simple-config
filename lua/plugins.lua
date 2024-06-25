@@ -69,4 +69,13 @@ return require('packer').startup(function(use)
 		"nvim-tree/nvim-tree.lua",
 		requires = { "nvim-tree/nvim-web-devicons" },
 	}
+
+	use {
+		"kristijanhusak/vim-dadbod-ui",
+		requires = {
+			{ "tpope/vim-dadbod" },
+			{ "kristijanhusak/vim-dadbod-completion" },
+			{ "tpope/vim-dotenv" },
+		},
+	}
 end)
