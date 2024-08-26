@@ -22,7 +22,7 @@ require('mason-lspconfig').setup {
 			lspconfig[server_name].setup {
 				settings = {
 					gopls = {
-						gofumpt = true,
+						gofumpt = false,
 						codelenses = {
 							gc_details = true,
 							generate = true,

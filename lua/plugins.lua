@@ -86,4 +86,9 @@ return require('packer').startup(function(use)
 			{ "nvim-treesitter/nvim-treesitter" }
 		}
 	}
+
+	use {
+		"vinnymeller/swagger-preview.nvim",
+		run = "npm install -g swagger-ui-watcher",
+	}
 end)
