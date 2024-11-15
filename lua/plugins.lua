@@ -13,7 +13,6 @@ return require('packer').startup(function(use)
 			ts_update()
 		end,
 	}
-	use 'tpope/vim-fugitive'
 	use { 'j-hui/fidget.nvim', tag = 'legacy' }
 	use {
 		'VonHeikemen/lsp-zero.nvim',
@@ -91,4 +90,6 @@ return require('packer').startup(function(use)
 		"vinnymeller/swagger-preview.nvim",
 		run = "npm install -g swagger-ui-watcher",
 	}
+
+	use 'aspeddro/gitui.nvim'
 end)
