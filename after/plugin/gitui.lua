@@ -16,12 +16,6 @@ require('gitui').setup {
   -- WIndow Options
   window = {
     options = {
-      -- Width window in %
-      -- @type: number
-      width = 90,
-      -- Height window in %
-      -- @type: number
-      height = 80,
       -- Border Style
       -- Enum: "none", "single", "rounded", "solid" or "shadow"
       -- @type: string
