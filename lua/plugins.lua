@@ -92,4 +92,6 @@ return require('packer').startup(function(use)
 	}
 
 	use 'aspeddro/gitui.nvim'
+
+	use 'tpope/vim-fugitive'
 end)
