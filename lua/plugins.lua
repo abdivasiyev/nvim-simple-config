@@ -4,7 +4,7 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.4', requires = { { 'nvim-lua/plenary.nvim' } }
+		'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 	use {
 		'nvim-treesitter/nvim-treesitter',
@@ -28,21 +28,7 @@ return require('packer').startup(function(use)
 		}
 	}
 	use 'mbbill/undotree'
-	-- use { "catppuccin/nvim", as = "catppuccin" }
 	use 'github/copilot.vim'
-
-	use {
-		'pwntester/octo.nvim',
-		requires = {
-			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope.nvim',
-			-- OR 'ibhagwan/fzf-lua',
-			'nvim-tree/nvim-web-devicons',
-		},
-		config = function()
-			require "octo".setup()
-		end
-	}
 	use 'lewis6991/gitsigns.nvim'
 
 	use {
@@ -68,16 +54,6 @@ return require('packer').startup(function(use)
 		"nvim-tree/nvim-tree.lua",
 		requires = { "nvim-tree/nvim-web-devicons" },
 	}
-
-	use {
-		"kristijanhusak/vim-dadbod-ui",
-		requires = {
-			{ "tpope/vim-dadbod" },
-			{ "kristijanhusak/vim-dadbod-completion" },
-			{ "tpope/vim-dotenv" },
-		},
-	}
-
 	use {
 		"ThePrimeagen/refactoring.nvim",
 		requires = {
@@ -85,13 +61,5 @@ return require('packer').startup(function(use)
 			{ "nvim-treesitter/nvim-treesitter" }
 		}
 	}
-
-	use {
-		"vinnymeller/swagger-preview.nvim",
-		run = "npm install -g swagger-ui-watcher",
-	}
-
-	use 'aspeddro/gitui.nvim'
-
 	use 'tpope/vim-fugitive'
 end)
