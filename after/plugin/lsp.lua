@@ -43,11 +43,12 @@ require('mason-lspconfig').setup {
 							rangeVariableTypes = true,
 						},
 						analyses = {
-							fieldalignment = true,
 							nilness = true,
 							unusedparams = true,
 							unusedwrite = true,
 							useany = true,
+							shadow = true,
+							unusedvariable = true,
 						},
 						usePlaceholders = true,
 						completeUnimported = true,
