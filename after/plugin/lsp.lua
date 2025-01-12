@@ -19,7 +19,10 @@ require('mason-lspconfig').setup {
 	handlers = {
 		function(server_name)
 			local lspconfig = require('lspconfig')
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 			lspconfig[server_name].setup {
+				capabilities = capabilities,
 				settings = {
 					gopls = {
 						gofumpt = false,
