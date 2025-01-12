@@ -36,3 +36,4 @@ vim.opt.wildignore:append { '*/node_modules/*', '*/vendor/*' } -- the search ign
 -- CONTEXTUAL
 vim.opt.title = true -- set the title of the window automaticaly, usefull for tabs plugin
 vim.opt.path:append { '**' } -- search (gf or :find) files down into subfolders
+
