@@ -65,4 +65,10 @@ return require('packer').startup(function(use)
 	use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
 	use "rebelot/kanagawa.nvim"
+
+	use {
+		'gelguy/wilder.nvim',
+		config = function()
+		end,
+	}
 end)
