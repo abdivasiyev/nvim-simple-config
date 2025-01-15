@@ -71,4 +71,16 @@ return require('packer').startup(function(use)
 		config = function()
 		end,
 	}
+	use {
+		'kawre/leetcode.nvim',
+		requires = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		}
+	}
+
+	use 'rebelot/terminal.nvim'
+
+	use 'folke/trouble.nvim'
 end)
