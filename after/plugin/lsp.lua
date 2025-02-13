@@ -38,6 +38,18 @@ vim.opt.updatetime = 100
 vim.api.nvim_create_autocmd('BufWritePre', {
 	pattern = "*",
 	callback = function()
+		local is_code_action_supportable = false
+		for _, client in ipairs(vim.lsp.buf_get_clients()) do
+			if client.supports_method("textDocument/codeAction") then
+				is_code_action_supportable = true
+				break
+			end
+		end
+
+		if not is_code_action_supportable then
+			return
+		end
+
 		local params = vim.lsp.util.make_range_params()
 		params.context = { only = { "source.organizeImports" } }
 		local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
