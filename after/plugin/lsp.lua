@@ -1,12 +1,29 @@
 local lsp_zero = require('lsp-zero')
 
+lsp_zero.format_on_save({
+	format_opts = {
+		async = false,
+		timeout_ms = 100,
+	},
+	servers = {
+		['gopls'] = { 'go' },
+		['lua_ls'] = { 'lua' },
+		['clangd'] = { 'c', 'c++' },
+		['psalm'] = { 'php' },
+		['pylsp'] = { 'python' },
+		['jsonls'] = { 'json' },
+		['rust_analyzer'] = { 'rust' },
+		['jsonnet_ls'] = { 'jsonnet' },
+		['intelephense'] = { 'php' },
+	},
+})
+
 lsp_zero.on_attach(function(client, buffer)
 	lsp_zero.default_keymaps({ buffer = buffer })
 
 	vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', { buffer = buffer })
 	vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<cr>', { buffer = buffer })
 	vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', { buffer = buffer })
-	vim.keymap.set('n', '<leader>d', '<cmd>Telescope diagnostics<cr>', { buffer = buffer })
 end)
 
 lsp_zero.set_sign_icons({
@@ -16,18 +33,44 @@ lsp_zero.set_sign_icons({
 	info = '»'
 })
 
--- highlight symbol under cursor
-vim.opt.updatetime = 300
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(event)
-    local id = vim.tbl_get(event, 'data', 'client_id')
-    local client = id and vim.lsp.get_client_by_id(id)
-    if client == nil then
-      return
-    end
+vim.opt.updatetime = 100
 
-    lsp_zero.highlight_symbol(client, bufnr)
-  end
+vim.api.nvim_create_autocmd('BufWritePre', {
+	pattern = "*",
+	callback = function()
+		local params = vim.lsp.util.make_range_params()
+		params.context = { only = { "source.organizeImports" } }
+		local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
+
+		for cid, res in pairs(result or {}) do
+			for _, r in pairs(res.result or {}) do
+				if r.edit then
+					local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or "utf-8"
+					vim.lsp.util.apply_workspace_edit(r.edit, enc)
+				end
+			end
+		end
+	end
+})
+
+vim.api.nvim_create_autocmd('LspAttach', {
+	callback = function(event)
+		local id = vim.tbl_get(event, 'data', 'client_id')
+		local client = id and vim.lsp.get_client_by_id(id)
+		if client == nil then
+			return
+		end
+
+		lsp_zero.highlight_symbol(client, bufnr)
+
+		if client.supports_method('textDocument/formatting') then
+			lsp_zero.buffer_autoformat()
+		end
+
+		if client.supports_method('textDocument/inlayHint') then
+			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+		end
+	end
 })
 
 require('mason').setup {}

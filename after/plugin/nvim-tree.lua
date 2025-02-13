@@ -18,9 +18,6 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = true,
   },
-  update_focused_file = {
-	enable = true,
-  },
 })
 
-vim.keymap.set('n', '<leader><s-p>', vim.cmd.NvimTreeToggle)
+vim.keymap.set("n", '<leader><s-p>', ":NvimTreeToggle<CR>")

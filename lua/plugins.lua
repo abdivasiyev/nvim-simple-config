@@ -4,7 +4,17 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 	use {
-		'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/plenary.nvim' } }
+		'nvim-telescope/telescope.nvim', requires = {
+		{ 'nvim-lua/plenary.nvim' },
+		{ 'jonarrien/telescope-cmdline.nvim' },
+		{ 'nvim-telescope/telescope-file-browser.nvim' },
+	}
+	}
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'kyazdani42/nvim-web-devicons'
+		},
 	}
 	use {
 		'nvim-treesitter/nvim-treesitter',
@@ -30,16 +40,6 @@ return require('packer').startup(function(use)
 	use 'mbbill/undotree'
 	use 'github/copilot.vim'
 	use 'lewis6991/gitsigns.nvim'
-
-	use {
-		'ray-x/go.nvim',
-		requires = {
-			{ 'ray-x/guihua.lua' },
-			{ 'neovim/nvim-lspconfig' },
-			{ 'ray-x/guihua.lua' },
-			{ 'nvim-treesitter/nvim-treesitter' },
-		},
-	}
 	use 'mg979/vim-visual-multi'
 	use 'wakatime/vim-wakatime'
 	use {
@@ -49,17 +49,6 @@ return require('packer').startup(function(use)
 			"nvim-neotest/nvim-nio",
 			"leoluz/nvim-dap-go",
 		},
-	}
-	use {
-		"nvim-tree/nvim-tree.lua",
-		requires = { "nvim-tree/nvim-web-devicons" },
-	}
-	use {
-		"ThePrimeagen/refactoring.nvim",
-		requires = {
-			{ "nvim-lua/plenary.nvim" },
-			{ "nvim-treesitter/nvim-treesitter" }
-		}
 	}
 	use 'tpope/vim-fugitive'
 	use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
@@ -79,18 +68,4 @@ return require('packer').startup(function(use)
 			"MunifTanjim/nui.nvim",
 		}
 	}
-
-	use 'rebelot/terminal.nvim'
-
-	use 'folke/trouble.nvim'
-
-	use 'Civitasv/cmake-tools.nvim'
-
-	use({
-		"kdheepak/lazygit.nvim",
-		-- optional for floating window border decoration
-		requires = {
-			"nvim-lua/plenary.nvim",
-		},
-	})
 end)

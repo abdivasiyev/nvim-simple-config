@@ -21,3 +21,6 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("n", "<TAB>", ":bn<CR>")
 vim.keymap.set("n", "<S-TAB>", ":bp<CR>")
 vim.keymap.set("n", "<leader>bd", ":bd<CR>")
+
+-- show lsp errors on float window
+vim.keymap.set("n", "<leader>e", ":lua vim.diagnostic.open_float(0, {scope='line'})<CR>")
