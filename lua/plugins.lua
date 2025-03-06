@@ -68,4 +68,12 @@ return require('packer').startup(function(use)
 			"MunifTanjim/nui.nvim",
 		}
 	}
+
+	use {
+		'folke/todo-comments.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim',
+		}
+	}
+	use 'vim-scripts/AnsiEsc.vim'
 end)
