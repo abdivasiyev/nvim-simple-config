@@ -76,4 +76,26 @@ return require('packer').startup(function(use)
 		}
 	}
 	use 'vim-scripts/AnsiEsc.vim'
+
+	use {
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-neotest/nvim-nio",
+			"nvim-lua/plenary.nvim",
+			"antoinemadec/FixCursorHold.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"fredrikaverpil/neotest-golang",
+			"andythigpen/nvim-coverage",
+		}
+	}
+
+	use {
+		'hexdigest/go-enhanced-treesitter.nvim',
+		requires = {
+			"derekstride/tree-sitter-sql",
+			run = ":TSInstall sql go",
+		}
+	}
+
+	use 'sindrets/diffview.nvim'
 end)
