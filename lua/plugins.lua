@@ -34,7 +34,9 @@ return require('packer').startup(function(use)
 			{ 'neovim/nvim-lspconfig' },
 			{ 'hrsh7th/nvim-cmp' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'saadparwaiz1/cmp_luasnip' },
 			{ 'L3MON4D3/LuaSnip' },
+			{ 'honza/vim-snippets' },
 		}
 	}
 	use 'mbbill/undotree'
@@ -54,6 +56,7 @@ return require('packer').startup(function(use)
 	use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
 	use "rebelot/kanagawa.nvim"
+	use { "scottmckendry/cyberdream.nvim" }
 
 	use {
 		'gelguy/wilder.nvim',
